@@ -1,0 +1,124 @@
+doctype html
+html(dir='ltr' lang='en')
+  head
+    meta(charset='UTF-8')
+    // <title> Responsiive Admin Dashboard | CodingLab </title>
+    link(rel='stylesheet' href='salesDash.css')
+    // Boxicons CDN Link
+    link(href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet')
+    link(rel='stylesheet' href="https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  body
+    .sidebar
+      .logo-details
+        img(src='../images/basket-159430_960_720.png')
+        span.logo_name K.GROCERIES LTD
+      ul.nav-links
+        li
+          a.active(href='#')
+            i.bx.bx-grid-alt
+            span.links_name Dashboard
+        li
+          a(href='') Sales
+        li
+          a(href='') Purchases
+        li
+          a(href='') Stock
+        li.log_out
+          a(href='#')
+            i.bx.bx-log-out
+            span.links_name Log out
+    section.home-section
+      nav
+        .sidebar-button
+          i.bx.bx-menu.sidebarBtn
+          span.dashboard Dashboard
+        .links
+          a(href='') Purchases
+        .links
+          a(href='') Sales
+        span.admin_name Branch:
+        .profile-details
+          img(src='../images/Nsereko.jpg' alt='')
+          span.admin_name Nsereko
+          br
+          span.admin_name manager
+      .home-content
+        .sales-boxes
+          .recent-sales.box
+            .title Recent Sales
+            .sales-details
+              ul.details
+                li.topic Date
+                li
+                  a(href='#') 02 Jun 2022
+                li
+                  a(href='#') 02 Jun 2022
+                li
+                  a(href='#') 02 Jun 2022
+                li
+                  a(href='#') 02 Jun 2022
+                li
+                  a(href='#') 02 Jun 2022
+              ul.details
+                li.topic Customer
+                li
+                  a(href='#') Solome N
+                li
+                  a(href='#') Kaffu millers ltd
+                li
+                  a(href='#') Roe Parter
+                li
+                  a(href='#') Diana Penty
+                li
+                  a(href='#') Martin Paw
+              ul.details
+                li.topic Sales
+                li
+                  a(href='#') Delivered
+                li
+                  a(href='#') Pending
+                li
+                  a(href='#') Returned
+                li
+                  a(href='#') Delivered
+                li
+                  a(href='#') Pending
+              ul.details
+                li.topic Total
+                li
+                  a(href='#')  Ugx 2,000,000
+                li
+                  a(href='#') Ugx 2,000,000
+                li
+                  a(href='#') Ugx 2,000,000
+                li
+                  a(href='#') Ugx 2,000,000
+                li
+                  a(href='#') Ugx 2,000,000
+            .button
+              a(href='#') See All
+          .top-sales.box
+            .title Top Seling Produce
+            ul.top-sales-details
+              li
+                a(href='#')
+                  img(src='../images/maiz-grain.jpg' alt='')
+                  span.product maize
+                span.price Ugx 2,000,000
+              li
+                a(href='#')
+                  img(src='../images/millet.avif' alt='')
+                  span.product Millet 
+                span.price Ugx 1,900,000
+              li
+                a(href='#')
+                  img(src='../images/soya beans.jpg' alt='')
+                  span.product Soya Beans
+                span.price Ugx 1,720,000
+              li
+                a(href='#')
+                  img(src='../images/maize2.jpg' alt='')
+                  span.product Maize 2.
+                span.price Ugx 1,700,000
+    script(src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous')

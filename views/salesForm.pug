@@ -1,0 +1,59 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='./.././public/styles/css/bootstrap.css')
+  link(rel='stylesheet' href='salesproduce.css')
+  body
+    // nav
+    nav.navbar.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand Karibu Groceries Ltd
+        a.links(href='') Home
+        a.links(href='') Dashboard
+        a.links(href='') New Sales
+        a.links(href='') Sales List
+        a.links(href='') Credit Sales
+        form.d-flex
+          input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn(type='submit') Search
+    // nav
+    h3 Cash Sales
+    form.row.g-3(method='POST' name='salesProduce' id='salesform' onsubmit='return  validationForm();')
+      .colA-md-6
+        label.form-label(for='produceName') Produce Name
+        select#produceName.form-select(name='produceName')
+          option(selected='')
+          option Beans
+          option Maize Grain
+          option G-nuts
+          option cowpeas
+          option Millet
+      .col-md-6
+        label.form-label(for='produceType') Produce Type
+        input.form-control(type='produceType' name='produceType' id=' ')
+      .col-md-6
+        label.form-label(for='nameOfDealer') Name Of Dealer
+        input#nameOfDealer.form-control(type='nameOfDealer' name='nameOfDealer')
+      .col-md-6
+        label.form-label(for='salesAgent') Sales Agent
+        select#salesAgent.form-select(name='salesAgent')
+          option(selected='') Choose...
+          option Adam M
+      .col-md-6
+        label.form-label(for='tonnage') Produce in tonnage(1000kgs)
+        input#tonnage.form-control(type='number' name='tonnage')
+      .col-md-6
+        label.form-label(for='start') Date
+        input#start.form-control(type='date' name='strip-start' value='date')
+      .col-md-6
+        label.form-label(for='appt') Time
+        input#appt.form-control(type='time' name='appt')
+      .col-md-12
+        label.form-label(for='amountPaid') Amount Paid(Ugx)
+        input#amountPaid.form-control(type='number')
+      .col-12
+        button.btn-submit(type='submit') submit
+    script(src='/salesproduce.js')
