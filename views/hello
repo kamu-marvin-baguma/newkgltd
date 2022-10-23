@@ -3,7 +3,7 @@ html(dir='ltr' lang='en')
   head
     meta(charset='UTF-8')
     // <title> Responsiive Admin Dashboard | CodingLab </title>
-    link(rel='stylesheet' href='salesDash.css')
+    link(rel='stylesheet' href='managerDash.css')
     // Boxicons CDN Link
     link(href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet')
     link(rel='stylesheet' href="https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous")
@@ -19,13 +19,15 @@ html(dir='ltr' lang='en')
             i.bx.bx-grid-alt
             span.links_name Dashboard
         li
-          a(href='') Sales
+          a(href='produce') Produce
         li
-          a(href='') Purchases
+          a(href='sales') Sales
+        li
+          a(href='purchase') Purchases
         li
           a(href='') Stock
         li.log_out
-          a(href='logout')
+          a(href='#')
             i.bx.bx-log-out
             span.links_name Log out
     section.home-section
@@ -33,10 +35,7 @@ html(dir='ltr' lang='en')
         .sidebar-button
           i.bx.bx-menu.sidebarBtn
           span.dashboard Dashboard
-        .links
-          a(href='') Purchases
-        .links
-          a(href='') Sales
+        
         span.admin_name Branch:
         .profile-details
           img(src='../images/Nsereko.jpg' alt='')
@@ -44,58 +43,57 @@ html(dir='ltr' lang='en')
           br
           span.admin_name manager
       .home-content
+        .overview-boxes
+          .box
+            .right-side
+              .box-topic Total Credits
+              .number 40,876
+              .indicator
+                i.bx.bx-up-arrow-alt
+                span.text Up from yesterday
+            i.bx.bx-cart-alt.cart
+          .box
+            .right-side
+              .box-topic Total Sales
+              .number 38,876
+              .indicator
+                i.bx.bx-up-arrow-alt
+                span.text Up from yesterday
+            i.bx.bxs-cart-add.cart.two
+          .box
+            .right-side
+              .box-topic Total Purchases
+              .number ugx12,876
+              .indicator
+                i.bx.bx-up-arrow-alt
+                span.text Up from yesterday
+            i.bx.bx-cart.cart.three
         .sales-boxes
           .recent-sales.box
             .title Recent Sales
             .sales-details
-              ul.details
-                li.topic Date
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-              ul.details
-                li.topic Customer
-                li
-                  a(href='#') Solome N
-                li
-                  a(href='#') Kaffu millers ltd
-                li
-                  a(href='#') Roe Parter
-                li
-                  a(href='#') Diana Penty
-                li
-                  a(href='#') Martin Paw
-              ul.details
-                li.topic Sales
-                li
-                  a(href='#') Delivered
-                li
-                  a(href='#') Pending
-                li
-                  a(href='#') Returned
-                li
-                  a(href='#') Delivered
-                li
-                  a(href='#') Pending
-              ul.details
-                li.topic Total
-                li
-                  a(href='#')  Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
+              each element in item
+                ul.details
+                  li.topic Date
+                  li
+
+                    a(href='#') #{element.date}
+              
+                ul.details
+                  li.topic Sales Agent 
+                  li
+                    a(href='#')  #{element.salesAgent}
+                
+                ul.details
+                  li.topic Branch
+                  li
+                    a(href='#')  #{element.branch}
+                
+                ul.details
+                  li.topic Amount Paid
+                  li
+                    a(href='#')  #{element.amountPaid}
+                
             .button
               a(href='#') See All
           .top-sales.box
@@ -121,4 +119,12 @@ html(dir='ltr' lang='en')
                   img(src='../images/maize2.jpg' alt='')
                   span.product Maize 2.
                 span.price Ugx 1,700,000
+                
+              //- each purch in purchase 
+              //-     ul 
+              //-       li= purch.itemName
+              //-       li= purch. produceName 
+              //-       li= purch. produceType 
+              //-       li= purch. branch 
+
     script(src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous')

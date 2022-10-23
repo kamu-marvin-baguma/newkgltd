@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+// const signup = require("../models/signup.js")
 const connectEnsureLogin = require("connect-ensure-login")
 
-router.get('/login', (req, res) => {
+router.get('/login',connectEnsureLogin.ensureLoggedOut(),(req, res) => {
     res.render('login'),{
         title: "login"
     }
@@ -10,7 +12,7 @@ router.get('/login', (req, res) => {
 });
 
 
-router.post('/', (req, res, next) => {
+router.post('/login', (req, res, next) => {
     passport.authenticate('local',
     (err, user, info) => {
       if (err) {
@@ -25,17 +27,11 @@ router.post('/', (req, res, next) => {
         if (err) {
           return next(err);
         }
-        // if (req.user.role === "manager"){
-        // return res.redirect('/managerDash');
-        // }
+       
+        // localStorage.setItem('branch',res.user.branch)
 
-        // if (req.user.role === "ceo"){
-        //   return res.redirect('/ceoDash');
-        //   }
-        //   if (req.user.role === "dev"){
-        //     return res.redirect('/regularDash');
-        //     }
         if (req.user.role === "manager"){
+          //  console.log(res.user.branch);
           return res.redirect('/managerDash');
           } else if(req.user.role === "director"){
             return res.redirect('/directorDash')

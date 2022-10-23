@@ -19,9 +19,15 @@ const signupSchema = new mongoose.Schema({
   },
   branch:{
     type:String,
+    required:true,
+    enum:['Kisasi', 'Namugongo', 'HeadOffice'],
+    trim:true,
   },
   role:{
     type:String,
+    required:true,
+    enum:['director', 'manager', 'SalesAgent'],
+    trim:true,
   },
 });
 

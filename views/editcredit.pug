@@ -1,0 +1,59 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel="stylesheet", href="/css/salesproduce.css")
+    
+  body
+    h3 New Credit
+    form.row.g-3(method="POST" action="/newCredit" name="creditform")
+      .col-md-6
+        label.form-label(for='produceName') Produce Name
+        select#produceName.form-select(name="produceName" type='text' name='produceName')
+          option(selected='')
+          option Beans
+          option Maize Grain
+          option G-nuts
+          option cowpeas
+          option Millet
+      .colA-md-6
+            label.form-label(for='produceType') Produce Type
+            select#produceType.form-select(name='produceType')
+              option(selected='')
+              option legumes 
+              option cereals
+      .col-md-6
+        label.form-label(for='nameOfDealer') Name of Dealer 
+        input#inputPassword4.form-control(type='nameOfDealer ' name="nameOfDealer")
+      .col-md-6
+        label.form-label(for='salesAgent') Sales Agent
+        select#salesAgent.form-select(name="salesAgent" type="text" name="salesAgent")
+          option(selected='') Choose...
+          option Adam M 
+      .col-md-6
+        label.form-label(for='amountDue') Amount Due (Ugx)
+        input#amountDue.form-control(type='Number' Name='amountDue')
+      .col-md-6
+        label.form-label(for='tonnage') Produce in tonnage
+        input#tonnage.form-control(type='number' name="tonnage")
+      .col-md-4
+        label.form-label(for='dispatchDate') Dispatch Date
+        input#dispatchDate.form-control(type='date', name='dispatchDate')
+      .col-md-4
+        label.form-label(for='dueDate') Due Date
+        input#dueDate.form-control(type='date', name='dueDate')
+      .col-md-4
+        label.form-label(for='location') Location 
+        input#location.form-control(type='text', name='location')
+      .col-md-6
+        label.form-label(for='contactNumber') Contact Number 
+        input#inputCity.form-control(type='number' name="contactNumber")
+      .col-md-6
+        label.form-label(for='nationalId') National Id
+        input#nationalId.form-control(type='text' name="nationalId")
+      .col-12
+        button.btn-submit(type='submit') submit

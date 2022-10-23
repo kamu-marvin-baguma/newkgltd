@@ -1,20 +1,20 @@
 function validationForm() {
-  let username1 = document.forms["myform"]["Name"];
+  let username1 = document.forms["myform"]["fullname"];
   // let username2 = document.forms["SampleForm"]["lname"];
   let email = document.forms["myform"]["Email"];
   let pass = document.forms["myform"]["Password"];
 
   // var strUser1 = e.options[e.selectedIndex].text;
-  // let nameerr = document.forms["RegForm"] ["nameerr"];
-  nameRegex = /^[A-Za-z]+$/
+  let nameerr = document.forms["RegForm"] ["nameerr"];
+  fullnameRegex = /^[A-Za-z]+$/
   emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/
 
   if (username1.value == "" || !nameRegex.test(username1.value)) {
-      alert("Please enter your first name. Use alphabet only");
+      // alert("Please enter your full name. Use alphabet only");
       username1.style.border = "2px solid red";
       username1.innerHTML = "Please enter your first name. Use alphabet only "
-      // username1.focus();
+      username1.focus();
       return false;
   }
   else {
@@ -31,16 +31,16 @@ function validationForm() {
 //     username2.style.border = "2px solid green";
 // }
 if (email.value == "" || !emailRegex.test(email.value)) {
-    alert("Please enter your email");
+    // alert("Please enter your email");
     email.style.border = "2px solid red";
     email.innerHTML = "Please enter your email"
-    // email.focus();
+    email.focus();
     return false;
 }
 if (email.value.indexOf("@", 0) < 0 || email.value.indexOf(".", 0) < 0) {
   alert("Please enter a valid email address");
   email.style.border = "2px solid red";
-  // email.innerHTML = "Please enter a valid email address ........@.... . ...."
+  email.innerHTML = "Please enter a valid email address ........@.... . ...."
   email.focus();
   return false;
 }

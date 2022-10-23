@@ -4,20 +4,25 @@ const connectEnsureLogin = require("connect-ensure-login")
 
 const router = express.Router()
 
-router.get('/credit', connectEnsureLogin.ensureLoggedIn(),
- async (req, res) => {
-    if (req.user.role === "manager" || req.user.role === "salesAgent "){
-        res.render('credit',{tb_credits:CredentialsContainer,Username:req.user.name})}
-        else {
-            res.redirect("/managerDash")
-        }
+router.get('/credit', (req, res) => {
+    res.render('creditForm',{
+        title: "credit"
+    })
+
 });
 
-router.get("/credit-list",async (req, res) => {
-    const credit = await creditModel.find()
-    res.render("creditList", {
-        title: "creditlist", credit: credit
-    })
+
+router.get('/credit-list',
+async (req, res) => {
+    try {
+         // console.log(req.user.role)
+        let items = await creditModel.find();
+        res.render("creditList",{credits: items})
+    }
+    catch(err){
+        console.log(err)
+        res.send("couldnt retrieve purchase list")
+    }
 })
 
 

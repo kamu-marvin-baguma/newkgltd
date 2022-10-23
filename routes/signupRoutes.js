@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const Signup = require("../models/signUp.js");
-const connectEnsureLogin = require("connect-ensure-login")
+// const connectEnsureLogin = require("connect-ensure-login")
 
 
 const router = express.Router();
@@ -29,7 +29,11 @@ async (req, res) => {
   });
 });
 
-
+router.get('/logout', (req, res)=>{
+  req.session.destroy(()=>{
+      res.redirect('/login')
+  })
+})
 
 
 

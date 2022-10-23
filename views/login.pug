@@ -8,18 +8,18 @@ head
     h1(style='text-align: center') Login Form
     form(action='/login' name='myform' method='POST')
       div
-        label(for='userName') Username:
-        input#userName(type='text' size='60' name='userName')
-        small(name='nameerr')
+        label(for='fullname') fullname:
+        input#fullname(type='text' size='60' name='fullname')
+        small(name='fullname')
       br
       div
-        label(for='E-mail') E-mail Address:
-        input#E-mail(type='text' size='60' name='Email')
+        label(for='email') Email Address:
+        input#email(type='email' size='60' name='email')
         small.error
       br
       div
         label(for='Password') Password:
-        input#Password(type='Password' size='60' name='Password')
+        input#password(type='password' size='60' name='password')
         small.error
       br
       div
@@ -28,6 +28,7 @@ head
         small
         p
           Dont Have No Account? 
-          span  Sign Up
+          span
+          a(href="/signup", style='color:red; text-decoration:none; hover:white;')  Sign Up
   script(src='/javascript/js/login.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')

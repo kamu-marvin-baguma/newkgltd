@@ -6,44 +6,71 @@ html(lang='en')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet')
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
+    script(src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous')
     link(rel='stylesheet' href='purchlist.css')
-  a.btn.btn-warning(href="/logout") Log out 
+    link(rel='stylesheet' href='/styles/css/purchlist.css')
+  body 
+    nav.navbar.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand Karibu Groceries Ltd
+        a.links(href='managerDash') Dashboard
+        a.links(href='/') Home
+        a.links(href='purchase') New Purchase
+        a.links(href='purchaseList') Purchase List
+        form.d-flex
+          input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn(type='submit') Search
+    .container
+      h2.list Purchase List
+        | Branch: 
+      if purchases.length 
+        table.table.table-dark.table-striped
+          thead.thead
+            tr
+              
+              th(scope='col') Produce Name
+              th(scope='col') Produce Type
+              th(scope='col') Name of Buyer
+              th(scope='col') Purchased On
+              th(scope='col') Tonnage(kgs)
+              th(scope='col') Unit price
+              th(scope='col') Cost Price
+              th(scope='col') Branch
+              th(scope='col') Contact Number
+              th(scope='col') Selling Price
+              th Action
+              th 
+          each purchase in purchases 
+            tr
+              td #{purchase.produceName}
+              td #{purchase.typeOfProduce}
+              td #{purchase.nameOfBuyer}
+              td #{purchase.PurchasedOn}
+              td #{purchase.tonnage}
+              td #{purchase.price}
+              td #{purchase.Costprice}
+              td #{purchase.branch}
+              td #{purchase.contact}
+              td #{purchase.Selling}
 
-  if purchase.length 
-    table.table.table-dark.table-striped
-      thead.thead
-        tr
-          th(scope='col') #
-          th(scope='col') Produce Name
-          th(scope='col') Produce Type
-          th(scope='col') Name of Buyer
-          th(scope='col') Purchased On
-          th(scope='col') Tonnage(kgs)
-          th(scope='col') Unit price
-            th(scope='col') Cost Price
-          th(scope='col') Branch
-          th(scope='col') Contact Number
-          th(scope='col') Selling Price
-      tbody
-      each purchase in purchases 
-        tr
-          td #{purchase._id}
-          td #{purchase.name}
-          td #{purchase.typeOfProduce}
-          td #{purchase.nameOfBuyer}
-          td #{purchase.PurchasedOn}
-          td #{purchase.tonnage}
-          td #{purchase.price}
-          td #{purchase.Costprice}
-          td #{purchase.dealer}
-          td #{purchase.contact}
-          td #{purchase.Selling}
-          td 
+              td 
                 form(method="POST",Action="/purchase-list")
-                    input(type="hidden",name="_id",value=purchase._id)
-                    button(type="submit") DELETE 
-          td 
-                a(href="/editPurchase" + purchase._id) Edit
-  else 
-    p There are no registered purchases 
-  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
+                  input(type="hidden",name="_id",value=purchase._id)
+                  button(type="submit") Delete
+
+              td 
+                a(href="/editPurchase"+purchase._id) Edit
+
+              //- if req.user.branch === 'Kisasi'
+              //-   td 
+              //-     form(method="POST",Action="/purchase-list")
+              //-       input(type="hidden",name="_id",value=purchase._id)
+              //-       button(type="submit") Delete
+              //- if req.user.branch === 'Namugongo' 
+              //-   td 
+              //-         a(href="/editPurchase"+purchase._id) Edit
+          a(href="/purchase") Return to purchase
+
+      else 
+        p There are no registered purchases 
+      script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')

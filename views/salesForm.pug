@@ -1,59 +1,73 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Document
-  link(rel='stylesheet' href='./.././public/styles/css/bootstrap.css')
-  link(rel='stylesheet' href='salesproduce.css')
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title edit sale
+    link(rel='stylesheet' href='/styles/css/bootstrap.css')
+    link(rel='stylesheet' href='salesproduce.css')
   body
     // nav
     nav.navbar.navbar-light.bg-light
       .container-fluid
         a.navbar-brand Karibu Groceries Ltd
-        a.links(href='') Home
-        a.links(href='') Dashboard
-        a.links(href='') New Sales
-        a.links(href='') Sales List
-        a.links(href='') Credit Sales
+        a.links(href='/') Home
+        a.links(href='managerDash') Dashboard
+        a.links(href='sales') New Sales
+        a.links(href='sales-list') Sales List
+        a.links(href='credit') Credit Sales
+        a.links(href='credit-list') Credit Sales List
         form.d-flex
           input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
           button.btn(type='submit') Search
-    // nav
-    h3 Cash Sales
-    form.row.g-3(method='POST' name='salesProduce' id='salesform' onsubmit='return  validationForm();')
-      .colA-md-6
-        label.form-label(for='produceName') Produce Name
-        select#produceName.form-select(name='produceName')
-          option(selected='')
-          option Beans
-          option Maize Grain
-          option G-nuts
-          option cowpeas
-          option Millet
-      .col-md-6
-        label.form-label(for='produceType') Produce Type
-        input.form-control(type='produceType' name='produceType' id=' ')
-      .col-md-6
-        label.form-label(for='nameOfDealer') Name Of Dealer
-        input#nameOfDealer.form-control(type='nameOfDealer' name='nameOfDealer')
-      .col-md-6
-        label.form-label(for='salesAgent') Sales Agent
-        select#salesAgent.form-select(name='salesAgent')
-          option(selected='') Choose...
-          option Adam M
-      .col-md-6
-        label.form-label(for='tonnage') Produce in tonnage(1000kgs)
-        input#tonnage.form-control(type='number' name='tonnage')
-      .col-md-6
-        label.form-label(for='start') Date
-        input#start.form-control(type='date' name='strip-start' value='date')
-      .col-md-6
-        label.form-label(for='appt') Time
-        input#appt.form-control(type='time' name='appt')
-      .col-md-12
-        label.form-label(for='amountPaid') Amount Paid(Ugx)
-        input#amountPaid.form-control(type='number')
-      .col-12
-        button.btn-submit(type='submit') submit
+    .container 
+      h3(style='text-align:center') New Sale
+        form.row.g-3(method='POST' name='newsales' action='/newSale' id='salesform' onsubmit='return  validationForm();')
+          .col-md-6
+            label.form-label(for='produceName') Produce Name
+            select#produceName.form-select(name='produceName' required)
+              option(selected='')
+              option(value='Beans') Beans
+              option(value='Maize Grain') Maize Grain
+              option(value='G-nuts') G-nuts
+              option(value='cowpeas') cowpeas
+              option(value='Millet') Millet
+          .col-md-6
+            label.form-label(for='produceType') Produce Type
+            select#produceType.form-select(name='produceType')
+              option(selected='')
+              option(value='legumes') legumes 
+              option(value='cereals') cereals
+              
+          .col-md-6
+            label.form-label(for='salesAgent') Sales Agent
+            select#salesAgent.form-select(name='salesAgent' required)
+              option(selected='') Choose...
+              option Adam M
+
+          .col-md-6
+            label.form-label(for='tonnage') Produce in tonnage(1000kgs)
+            input#tonnage.form-control(type='number' name='tonnage' required)
+          
+          .col-md-6
+            label.form-label(for='amountPaid') Amount Paid(Ugx)
+            input#amountPaid.form-control(type='number' name='amountPaid' required)
+
+          .col-md-6
+            label.form-label(for='date') Date
+            input#start.form-control(type='date' name='date')
+
+          .col-md-6
+            label.form-label(for='nameOfDealer') Name Of Dealer
+            input#nameOfDealer.form-control(type='nameOfDealer' name='nameOfDealer' required)
+
+          .col-md-4
+            label.form-label(for='branch') Branch 
+          select#branch.form-select(name='branch' type='text' required)
+            option(selected='')
+            option(value='Kisasi') Kisasi 
+            option(value='Namugongo') Namugongo
+          .col-12
+            button.btn-submit(type='submit') submit
     script(src='/salesproduce.js')

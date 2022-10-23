@@ -1,7 +1,7 @@
 function validationForm() {
   let name = document.forms["myform"]["name"];
   let username = document.forms["myform"]["Username"]
-  let email = document.forms["myform"]["Email"]
+  let email = document.forms["myform"]["email"]
   let pass = document.forms["myform"]["password"]
   let branch = document.forms["myform"]["branch"]
   let role = document.forms["myform"]["role"]

@@ -1,91 +1,64 @@
 doctype html
 html(lang='en')
   head
-    title
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', rel='stylesheet')
-    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
-   
-body
-   
-    .container
-      h2.list Purchases Lists
-      h5="list"
-        | Branch:
-        table.table.table-dark.table-striped
-          thead.thead
-            tr
-              th #
-              th Produce Name
-              th Produce Type
-              th Name of Buyer
-              th Purchased On
-              th Tonnage(kgs)
-              th Unit price
-              th Cost Price
-              th Branch
-              th Contact Number
-              th Selling Price
-          tbody
-            tr
-              td 1
-              td G-nuts
-              td legumes
-              td kjt Ltd
-              td 20/09/2022
-              td 50
-              td 2000
-              td 1500
-              td Kisasi
-              td 0700804027
-              td 3000
-            tr
-              td 2
-              td G-nuts
-              td legumes
-              td kjt Ltd
-              td 20/09/2022
-              td 50
-              td 2000
-              td 1500
-              td Kisasi
-              td 0700804027
-              td 3000
-            tr
-              td 3
-              td G-nuts
-              td legumes
-              td kjt Ltd
-              td 20/09/2022
-              td 50
-              td 2000
-              td 1500
-              td Kisasi
-              td 0700804027
-              td 3000
-            tr
-              td 4
-              td G-nuts
-              td legumes
-              td kjt Ltd
-              td 20/09/2022
-              td 50
-              td 2000
-              td 1500
-              td Kisasi
-              td 0700804027
-              td 3000
-            tr
-              td 5
-              td G-nuts
-              td legumes
-              td kjt Ltd
-              td 20/09/2022
-              td 50
-              td 2000
-              td 1500
-              td Kisasi
-              td 0700804027
-              td 3000
-        button.btn(type='submit') logout
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Edit Purchase 
+    link(rel='stylesheet' href='./css/bootstrap.css')
+    link(rel='stylesheet' href='purh.css')
+  body
+    nav.navbar.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand Karibu Groceries Ltd
+        a.links(href='managerDash') Dashboard
+        a.links(href='/') Home
+        a.links(href='purchase') New Purchase
+        a.links(href='purchase-list') Purchase List
+        form.d-flex
+          input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn(type='submit') Search
+    form.row.g-3
+     
+      .col-md-6
+        label.form-label(for='produceName') Produce Name
+        select#produceName.form-select(name='produceName' value=purchase.produceName)
+          option(selected='')
+          option Beans
+          option Maize Grain
+          option G-nuts
+          option cowpeas
+          option Millet
+      .col-md-6
+        label.form-label(for='produceType') Produce Type
+        select#produceType.form-select(name='produceType' value=purchase.produceType)
+          option(selected='')
+          option legumes 
+          option cereals
+              
+      .col-6
+        label.form-label(for='nameOfBuyer') Name of Buyer
+        input#nameOfBuyer.form-control(type='text' name='nameOfBuyer' value=purchase.nameOfBuyer)
+      .col-md-6
+        label.form-label(for='PurchasedOn') Purchased On
+        input.form-control(type='text' id='PurchasedOn' name='PurchasedOn' value=purchase.PurchasedOn)
+      .col-md-6
+        label.form-label(for='Tonnage') Tonnage(kgs)
+        input#Tonnage.form-control(type='number' name='Tonnage' value=purchases.Tonnage)
+      .col-md-6
+        label.form-label(for='price') Unit price
+        input#price.form-control(type='number' name='Price' value=purchase.price)
+      .col-md-6
+        label.form-label(for='Costprice') Cost Price
+        input#Costprice.form-control(type='number' name='Costprice' value=purchase.Costprice)
+      .col-6
+        label.form-label(for='dealer') Dealer's Name
+        input#dealer.form-control(type='text' Name='dealer' value=purchase.dealer)
+      .col-6
+        label.form-label(for='contact') Contact Number
+        input#contact.form-control(type='number' name='contact' value=purchase.contact)
+      .col-6
+        label.form-label(for='Selling') Selling Price
+        input#Selling.form-control(type='number' name='Selling' value=purchase.selling)
+      .col-12
+        button.btn.btn-primary(type='submit') submit

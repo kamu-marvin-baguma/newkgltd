@@ -1,5 +1,5 @@
 module.exports.isSalesAgent = function (req, res, next) {
-    if (req.user.role === 'sales_agent') {
+    if (req.user.role === 'SalesAgent') {
         return next();
     } else {
         res.send('Only sales agent allowed to access this resource. <a href="http://localhost:3003/login">Go here to login again</a>');
@@ -22,7 +22,7 @@ module.exports.isDirector = function (req, res, next) {
     }
 }
 module.exports.isManagerOrSalesAgent = function (req, res, next) {
-    if (req.user.role === 'manager'  || req.user.role === 'salesAgent') {
+    if (req.user.role === 'manager'  || req.user.role === 'SalesAgent') {
         return next();
     } else {
         res.send('Only Manager and Sales agents allowed. <a href="http://localhost:3003/login">Go here to login again</a>');

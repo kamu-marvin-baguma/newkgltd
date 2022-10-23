@@ -1,8 +1,12 @@
 const express = require("express")
+const passport = require("passport");
 const workerModel = require("../models/workerModel")
 const multer = require('multer');
+const salesModel = require('../models/salesModel')
 // const imageModel = require("../models/imageModel")
 const connectEnsureLogin = require("connect-ensure-login");
+const{isManager, isManagerOrSalesAgent} = require("./auth");
+const { isDirector, isSalesAgent } = require("./auth");
 
 const router = express.Router()
 
@@ -29,7 +33,7 @@ const fileFilter = (req, file, cb)=>{
         cb(null, true);
     } else {
         cb(null, false);
-    }
+    } 
 }
 const upload = multer({
     storage: storage,
@@ -37,14 +41,78 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-router.get("/managerDash",(req,res)=>{
-    res.render("managerDash")
-})
-router.get("/directorDash",(req,res)=>{
-    res.render("directorDash")
+// router.get("/managerDash", connectEnsureLogin.ensureLoggedIn(), isManager,
+//   async(req,res)=>{
+//     try{
+//         // let purchaseList = []
+//         // if(req.user.branch === 'Kisasi',{
+//         //     purchaseList = await purchaseModel.find({
+//         //       branch:'Kisasi'
+            
+//         //     }elseif (req.user.branch === 'Namugongo'){
+//         //     purchaseList = await purchaseModel.find{
+//         //       branch:'Namugongo'
+//         //  }
+//         // })
+//                 // console.log(req.user)
+//         res.render("managerDash",{
+//             purchase:purchaseList,
+//         //     // fullname:req.user.fullname + " " + req.user.fullname,
+//         //     // email:req.user.email,
+//         //     // branch:req.user.branch,
+//         //     // role:req.user.role,
+//         // }   
+
+    
+//     catch(err){
+//         console.log(err)
+//         res.send("Oops! Access Denied, Login to continue")
+//     }
+    
+// })
+router.get("/managerDash", connectEnsureLogin.ensureLoggedIn(),isManager,
+async(req,res)=>{
+    try{
+        console.log(req.user)
+        const items = await salesModel.find({}).sort({amountPaid: -1}).limit(10)
+        res.render("managerDash",{
+            fullname:req.user.fullname + " " + req.user.fullname,
+            email:req.user.email,
+            branch:req.user.branch,
+            role:req.user.role,
+            item:items
+        })
+
+    }
+    catch(err){
+        console.log(err)
+        res.send("Oops! Access Denied, Login to continue")
+    }
+    
 })
 
-router.get("/salesDash",(req,res)=>{
+
+router.get("/directorDash", connectEnsureLogin.ensureLoggedIn(),isDirector,
+async(req,res)=>{
+    try{
+        console.log(req.user)
+        res.render("directorDash",{
+            fullname:req.user.fullname + " " + req.user.fullname,
+            email:req.user.email,
+            branch:req.user.branch,
+            role:req.user.role,
+        })
+
+    }
+    catch(err){
+        console.log(err)
+        res.send("Oops! Access Denied, Login to continue")
+    }
+    
+})
+
+router.get("/salesDash", connectEnsureLogin.ensureLoggedIn(),isSalesAgent,
+(req,res)=>{
     res.render("salesDash")
 })
 

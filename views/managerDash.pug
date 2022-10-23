@@ -1,5 +1,5 @@
 doctype html
-html(dir='ltr' lang='en')
+html(lang='en' dir='ltr')
   head
     meta(charset='UTF-8')
     // <title> Responsiive Admin Dashboard | CodingLab </title>
@@ -15,11 +15,11 @@ html(dir='ltr' lang='en')
         span.logo_name K.GROCERIES LTD
       ul.nav-links
         li
-          a.active(href='#')
+          a.active(href='managerDash')
             i.bx.bx-grid-alt
             span.links_name Dashboard
         li
-          a(href='produce') Produce
+          a(href='produce') Produce 
         li
           a(href='sales') Sales
         li
@@ -27,7 +27,7 @@ html(dir='ltr' lang='en')
         li
           a(href='') Stock
         li.log_out
-          a(href='#')
+          a(href='logout')
             i.bx.bx-log-out
             span.links_name Log out
     section.home-section
@@ -58,7 +58,10 @@ html(dir='ltr' lang='en')
           .box
             .right-side
               .box-topic Total Sales
-              .number 38,876
+              var total = 0
+              each element in item 
+                 total = #{total + element.amountPaid}
+              .number #{total}
               .indicator
                 i.bx.bx-up-arrow-alt
                 span.text Up from yesterday
@@ -71,81 +74,26 @@ html(dir='ltr' lang='en')
                 i.bx.bx-up-arrow-alt
                 span.text Up from yesterday
             i.bx.bx-cart.cart.three
-        .sales-boxes
-          .recent-sales.box
-            .title Recent Sales
-            .sales-details
-              ul.details
-                li.topic Date
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-                li
-                  a(href='#') 02 Jun 2022
-              ul.details
-                li.topic Customer
-                li
-                  a(href='#') Solome N
-                li
-                  a(href='#') Kaffu millers ltd
-                li
-                  a(href='#') Roe Parter
-                li
-                  a(href='#') Diana Penty
-                li
-                  a(href='#') Martin Paw
-              ul.details
-                li.topic Sales
-                li
-                  a(href='#') Delivered
-                li
-                  a(href='#') Pending
-                li
-                  a(href='#') Returned
-                li
-                  a(href='#') Delivered
-                li
-                  a(href='#') Pending
-              ul.details
-                li.topic Total
-                li
-                  a(href='#')  Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-                li
-                  a(href='#') Ugx 2,000,000
-            .button
-              a(href='#') See All
-          .top-sales.box
-            .title Top Seling Produce
-            ul.top-sales-details
-              li
-                a(href='#')
-                  img(src='../images/maiz-grain.jpg' alt='')
-                  span.product maize
-                span.price Ugx 2,000,000
-              li
-                a(href='#')
-                  img(src='../images/millet.avif' alt='')
-                  span.product Millet 
-                span.price Ugx 1,900,000
-              li
-                a(href='#')
-                  img(src='../images/soya beans.jpg' alt='')
-                  span.product Soya Beans
-                span.price Ugx 1,720,000
-              li
-                a(href='#')
-                  img(src='../images/maize2.jpg' alt='')
-                  span.product Maize 2.
-                span.price Ugx 1,700,000
+        section.attendance
+          .attendance-list
+            h1 Recent Sales
+            table.table
+              thead
+                tr
+                  
+                  th(scope='col') Date
+                  th(scope='col') Sales Agent 
+                  th(scope='col') Branch
+                  th(scope='col') Amount Paid
+                
+              tbody
+              each element in item
+                tr
+                  
+                  td #{element.date}
+                  td #{element.salesAgent}
+                  td #{element.branch}
+                  td #{element.amountPaid}
+                  
+               
     script(src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous')

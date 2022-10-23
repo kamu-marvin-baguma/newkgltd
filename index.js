@@ -18,6 +18,12 @@ const SignUp = require("./models/signUp");
 
 const app = express();
 
+// app.locals.moment = require("./moment"); // moment for data formating and global variable
+
+// app.use('/images', express.static('images'))
+
+// app.locals.moment = require("moment")
+
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));
@@ -34,19 +40,31 @@ mongoose.connect(process.env.DATABASE_URL,
 
 const expressSession = require('express-session')({
     secret: 'secret',
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   });
 
 app.use(expressSession);
 //configuring passport
 app.use(passport.initialize());
 app.use(passport.session());
+// to read JSON post data
+app.use(express.json());
+
 
 //--------------------------------
 passport.use(SignUp.createStrategy());
 passport.serializeUser(SignUp.serializeUser());
 passport.deserializeUser(SignUp.deserializeUser());
+
+//Global variable for  loggedin users
+app.get('*', (req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+})
+
+
+
 
 app.use("/", landingRoutes);
 app.use("/", randomRoutes)
